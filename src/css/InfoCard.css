@@ -1,0 +1,28 @@
+.info-title{
+    text-align: center;
+    background-color: #6383ea;
+    border-radius: 10px;
+}
+
+.info-element{
+    text-align: center;
+}
+
+.info-card{
+    font-size: 20px;
+    background-color: #465ca4;
+    border-radius: 15px;
+    padding: 20px;
+    display: inline-table;
+    color: #faf9f8;
+    margin-bottom: 10px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.info-list{
+    list-style: none;
+    padding-left: 0;
+    justify-content: center;
+    vertical-align: middle;
+}

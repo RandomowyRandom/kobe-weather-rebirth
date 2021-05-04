@@ -50,7 +50,7 @@ class SearchBar extends Component<IProps, IState> {
       <div className='search-bar'>
         <input onChange={event => this.setState({ searchInput: event.target.value })} type='text' placeholder='Podaj nazwę miasta...' />
         <button onClick={this.onSearch}>Szukaj</button>
-        <ul>{this.state.searching ? "Szukanie..." : this.state.searchResult.map(item => <li key={item.Key} onClick={() => { this.onCityChosen(item.Key, item) }}>{`${item.LocalizedName} ${item.AdministrativeArea.LocalizedName} - ${item.Country.LocalizedName}`}</li>)}</ul>
+        <ul>{this.state.searching ? "Szukanie..." : this.state.searchResult.map(item => <li className='search-result' key={item.Key} onClick={() => { this.onCityChosen(item.Key, item) }}>{`${item.LocalizedName} ${item.AdministrativeArea.LocalizedName} - ${item.Country.LocalizedName}`}</li>)}</ul>
       </div>
     )
   }

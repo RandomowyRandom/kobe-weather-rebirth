@@ -24,7 +24,7 @@ ul{
     list-style: none;
 }
 
-li{
+.search-result{
     background-color: #6383ea;
     border-radius: 10px;
     color: #faf9f8;
