@@ -1,0 +1,16 @@
+.weather-panel{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+}
+
+.weather-panel p{
+    font-size: 25px;
+    background-color: #465ca4;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding: 20px;
+    color: #faf9f8;
+}

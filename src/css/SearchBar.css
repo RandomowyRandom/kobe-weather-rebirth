@@ -1,0 +1,40 @@
+button{
+    color: #faf9f8;
+    background-color: #bf62ea;
+    border-color: transparent;
+    border-radius: 6px;
+    border-width: 25px;
+    font-family: inherit;
+    font-weight: bolder;
+    margin-left: 5px;
+    font-size: 25px;
+}
+
+input{
+    border-color: transparent;
+    font-family: inherit;
+    font-weight: bolder;
+    border-width: 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+ul{
+    list-style: none;
+}
+
+li{
+    background-color: #6383ea;
+    border-radius: 10px;
+    color: #faf9f8;
+    padding: 10px;
+    list-style: none;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    display: inline-block
+}
+
+.search-bar{
+    text-align: center;
+}
