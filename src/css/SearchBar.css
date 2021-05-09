@@ -1,40 +1,57 @@
-button{
-    color: #faf9f8;
-    background-color: #bf62ea;
-    border-color: transparent;
-    border-radius: 6px;
-    border-width: 25px;
-    font-family: inherit;
-    font-weight: bolder;
-    margin-left: 5px;
-    font-size: 25px;
+button {
+  color: #faf9f8;
+  background-color: #bf62ea;
+  border-color: transparent;
+  border-radius: 6px;
+  border-width: 25px;
+  font-family: inherit;
+  font-weight: bolder;
+  margin-left: 5px;
+  font-size: 25px;
 }
 
-input{
-    border-color: transparent;
-    font-family: inherit;
-    font-weight: bolder;
-    border-width: 30px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 25px;
+p {
+  font-family: inherit;
+  font-weight: bolder;
+  font-size: 25px;
 }
 
-ul{
-    list-style: none;
+.city-input {
+  border-color: transparent;
+  font-family: inherit;
+  font-weight: bolder;
+  border-width: 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 25px;
 }
 
-.search-result{
-    background-color: #6383ea;
-    border-radius: 10px;
-    color: #faf9f8;
-    padding: 10px;
-    list-style: none;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    display: inline-block
+.geo-input {
+  border-color: transparent;
+  font-family: inherit;
+  font-weight: bolder;
+  border-width: 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 15px;
+  margin-left: 10px;
 }
 
-.search-bar{
-    text-align: center;
+ul {
+  list-style: none;
+}
+
+.search-result {
+  background-color: #6383ea;
+  border-radius: 10px;
+  color: #faf9f8;
+  padding: 10px;
+  list-style: none;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.search-bar {
+  text-align: center;
 }

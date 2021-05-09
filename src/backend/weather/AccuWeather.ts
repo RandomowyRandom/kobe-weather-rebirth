@@ -1,5 +1,3 @@
-
-
 class AcuuWeather {
   private apiKey: string;
 
@@ -17,6 +15,14 @@ class AcuuWeather {
 
   public async getForecast(locationKey: string) {
     const endpoint = `http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?apikey=${this.apiKey}&language=pl-pl`;
+    let res = await fetch(endpoint);
+    let data = await res.json();
+
+    return data;
+  }
+
+  public async getCityByCoordinates(latitude: number, longitude: number) {
+    const endpoint = `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.apiKey}&q=${latitude}%2C${longitude}&language=pl-pl`;
     let res = await fetch(endpoint);
     let data = await res.json();
 
