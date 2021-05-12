@@ -2,7 +2,7 @@ import { Component } from 'react';
 import AccuWeather from './backend/weather/AccuWeather';
 import SearchBar from './components/SearchBar';
 import WeatherPanel from './components/WeatherPanel';
-//import * as apikey from './apikey.json'
+import * as apikey from './apikey.json'
 import SettingsSwitch from './components/Switch'
 
 import './css/App.css'
@@ -49,8 +49,8 @@ class App extends Component<IProps, IState> {
       cityInfo: undefined
     }
 
-    this.weather = new AccuWeather(process.env.ACCUAPI);
-    this.maps = new GoogleMaps(process.env.GOOGLEAPI);
+    this.weather = new AccuWeather(apikey.accuWeatherKey);
+    this.maps = new GoogleMaps(apikey.googleMapsKey);
 
     this.onCityChosen = this.onCityChosen.bind(this);
     this.renderCityWeatherPanel = this.renderCityWeatherPanel.bind(this);
