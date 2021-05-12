@@ -1,8 +1,9 @@
 class GoogleMaps{
-  apiKey: string;
+  apiKey: string | undefined;
 
-  constructor(apiKey: string){
+  constructor(apiKey: string | undefined){
     this.apiKey = apiKey;
+    console.log(apiKey);
   }
 
   public getIFrameSourceForMap(country: string, region: string, city: string) {
