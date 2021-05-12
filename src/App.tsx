@@ -62,7 +62,6 @@ class App extends Component<IProps, IState> {
     let todayConditionsImperial = await this.weather.getFoecastToday(locationKey, this.state.useImperial);
     //let cityInfo = await this.maps.getCityInfo(`${city.LocalizedName}`)
 
-    console.log(conditions);
     this.setState({
       locationKey: locationKey,
       weatherText: conditions[0].WeatherText,

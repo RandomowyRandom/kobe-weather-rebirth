@@ -3,7 +3,6 @@ class AcuuWeather {
 
   constructor(apiKey: string | undefined) {
     this.apiKey = apiKey;
-    console.log(apiKey);
   }
 
   public async getCitiesBySearch(cityName: string) {

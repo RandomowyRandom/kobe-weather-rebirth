@@ -3,7 +3,6 @@ class GoogleMaps{
 
   constructor(apiKey: string | undefined){
     this.apiKey = apiKey;
-    console.log(apiKey);
   }
 
   public getIFrameSourceForMap(country: string, region: string, city: string) {
