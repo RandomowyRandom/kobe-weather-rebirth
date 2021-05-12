@@ -1,5 +1,4 @@
 import { Component, } from 'react'
-import { isNumericLiteral } from 'typescript';
 import AccuWeather from '../backend/weather/AccuWeather'
 
 import '../css/SearchBar.css';
