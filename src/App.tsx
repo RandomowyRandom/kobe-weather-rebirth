@@ -1,12 +1,13 @@
 import { Component } from 'react';
-import AccuWeather from './backend/weather/AccuWeather';
 import SearchBar from './components/SearchBar';
 import WeatherPanel from './components/WeatherPanel';
-import * as apikey from './apikey.json'
-import SettingsSwitch from './components/Switch'
+import * as apikey from './apikey.json';
+import SettingsSwitch from './components/Switch';
 
-import './css/App.css'
+import './css/App.css';
 import GoogleMaps from './backend/weather/GoogleMaps';
+import AccuWeather from './backend/weather/AccuWeather';
+import ForecastChart from './components/ForecastChart';
 
 interface IProps {
 
@@ -25,6 +26,9 @@ interface IState {
   useImperial: boolean;
   useMap: boolean;
   cityInfo: any;
+  futureForecastMetric: any;
+  futureForecastImperial: any;
+  useForecast: boolean;
 }
 
 class App extends Component<IProps, IState> {
@@ -46,7 +50,10 @@ class App extends Component<IProps, IState> {
       conditionsTodayImperial: undefined,
       useImperial: false,
       useMap: true,
-      cityInfo: undefined
+      useForecast: true,
+      cityInfo: undefined,
+      futureForecastMetric: undefined,
+      futureForecastImperial: undefined,
     }
 
     this.weather = new AccuWeather(apikey.accuWeatherKey);
@@ -60,7 +67,8 @@ class App extends Component<IProps, IState> {
     let conditions = await this.weather.getForecast(locationKey);
     let todayConditionsMetric = await this.weather.getFoecastToday(locationKey, !this.state.useImperial);
     let todayConditionsImperial = await this.weather.getFoecastToday(locationKey, this.state.useImperial);
-    //let cityInfo = await this.maps.getCityInfo(`${city.LocalizedName}`)
+    let futureForecastMetric = await this.weather.get5DayForecast(locationKey, !this.state.useImperial);
+    let futureForecastImperial = await this.weather.get5DayForecast(locationKey, this.state.useImperial);
 
     this.setState({
       locationKey: locationKey,
@@ -71,9 +79,12 @@ class App extends Component<IProps, IState> {
       temperatureF: conditions[0].Temperature.Imperial.Value,
       cityObject: city,
       conditionsTodayMetric: todayConditionsMetric,
-      conditionsTodayImperial: todayConditionsImperial
-      //cityInfo: cityInfo
+      conditionsTodayImperial: todayConditionsImperial,
+      futureForecastImperial: futureForecastImperial,
+      futureForecastMetric: futureForecastMetric,
     });
+
+
   }
 
   private renderCityWeatherPanel() {
@@ -90,11 +101,21 @@ class App extends Component<IProps, IState> {
           tempC={this.state.temperatureC}
           tempF={this.state.temperatureF}
           city={this.state.currentCityName}
-        //cityInfo={this.state.cityInfo.itemListElement[0].result.detailedDescription.articleBody}
         />
         {
           this.state.useMap
             ? <iframe title='location-map' width="400" height="300" loading="lazy" src={this.maps.getIFrameSourceForMap(this.state.cityObject.Country.LocalizedName, this.state.cityObject.AdministrativeArea.LocalizedName, this.state.cityObject.LocalizedName)}></iframe>
+            : <p></p>
+        }
+        {
+          this.state.useForecast
+            ? <ForecastChart 
+        useMetric={!this.state.useImperial} 
+        dates={this.state.futureForecastMetric.DailyForecasts.map((x: any) => x.Date.slice(0, 10))} 
+        metricTemperaturesMin={this.state.futureForecastMetric.DailyForecasts.map((x: any) => x.Temperature.Minimum.Value)}
+        imperialTemperaturesMax={this.state.futureForecastImperial.DailyForecasts.map((x: any) => x.Temperature.Maximum.Value)}
+        metricTemperaturesMax={this.state.futureForecastMetric.DailyForecasts.map((x: any) => x.Temperature.Maximum.Value)}
+        imperialTemperaturesMin={this.state.futureForecastImperial.DailyForecasts.map((x: any) => x.Temperature.Minimum.Value)}/>
             : <p></p>
         }
       </div>
@@ -108,7 +129,8 @@ class App extends Component<IProps, IState> {
         <SearchBar weatherAPI={this.weather} onSearchResultChosen={this.onCityChosen} />
         <div className='settings'>
             <SettingsSwitch label='Używaj systemu imperialnego' onChange={e => this.setState({ useImperial: e })} state={this.state.useImperial} />
-            <SettingsSwitch label='Załącz mapę Google' onChange={e => this.setState({useMap: e})} state={this.state.useMap}/>          
+            <SettingsSwitch label='Załącz mapę Google' onChange={e => this.setState({useMap: e})} state={this.state.useMap} />
+            <SettingsSwitch label='Prognoza temeperatury' onChange={e => this.setState({useForecast: e})} state={this.state.useForecast} />
           </div>
         {this.state.isCityChosen ? this.renderCityWeatherPanel() : <p></p>}
       </div>

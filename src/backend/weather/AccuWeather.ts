@@ -34,8 +34,15 @@ class AcuuWeather {
     let res = await fetch(endpoint);
     let data = await res.json();
 
-    console.log('FORT');
     console.log(data);
+
+    return data;
+  }
+
+  public async get5DayForecast(locationKey: string, useMetric: boolean){
+    const endpoint = `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=${this.apiKey}&language=pl-pl&metric=${useMetric}`;
+    let res = await fetch(endpoint);
+    let data = await res.json();
 
     return data;
   }

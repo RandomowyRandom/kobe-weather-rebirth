@@ -10,12 +10,9 @@ class GoogleMaps{
   }
 
   public async getCityInfo(city: string) {
-    const endpoint = `https://kgsearch.googleapis.com/v1/entities:search?query=${city}&key=${this.apiKey}&limit=1&indent=True&languages=pl`;
+    const endpoint = `https://kgsearch.googleapis.com/v1/entities:search?query=${city}&key=${this.apiKey}&limit=1&indent=True`;
     let res = await fetch(endpoint);
     let data = await res.json();
-
-    console.log(data);
-    console.log(endpoint);
 
     return data;
   }
