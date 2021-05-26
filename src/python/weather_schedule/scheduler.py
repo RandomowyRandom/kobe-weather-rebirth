@@ -25,21 +25,21 @@ def cache_weather(confs: dict, json_data: dict):
         "date": f'{today}'
     })
 
-    with open('weather_history.json', 'w') as file:
+    with open(r'src/weather_history.json', 'w') as file:
         json.dump(json_data, file)
 
 def main():
 
     json_data = {
-    "data": []
+    "data": [{"locationKey": "", "metricTemp": 0, "imperialTemp": 0, "date": "0000-00-00"}]
 }
 
     # json loading
     try:
-        with open('weather_history.json', 'r') as file:
+        with open(r'src/weather_history.json', 'r') as file:
             json_data = json.load(file)
     except:
-        with open('weather_history.json', 'w') as file:
+        with open(r'src/weather_history.json', 'w') as file:
             json.dump(json_data, file)
         print('Creating new file!')
 

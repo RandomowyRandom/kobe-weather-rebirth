@@ -8,6 +8,7 @@ import './css/App.css';
 import GoogleMaps from './backend/weather/GoogleMaps';
 import AccuWeather from './backend/weather/AccuWeather';
 import ForecastChart from './components/ForecastChart';
+import WeatherHistory from './components/WeatherHistory';
 
 interface IProps {
 
@@ -118,6 +119,7 @@ class App extends Component<IProps, IState> {
         imperialTemperaturesMin={this.state.futureForecastImperial.DailyForecasts.map((x: any) => x.Temperature.Minimum.Value)}/>
             : <p></p>
         }
+        <WeatherHistory locationKey={this.state.locationKey} useMetric={!this.state.useImperial}/>
       </div>
     );
   }

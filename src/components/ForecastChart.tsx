@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Line } from 'react-chartjs-2';
 import { ChartData } from 'chart.js';
 
+import '../css/ForecastChart.css';
 
 interface IProps{
     metricTemperaturesMin: Array<number>;
@@ -39,6 +40,7 @@ class ForecastChart extends Component<IProps, IState> {
 
     render(){
 
+      
         let data : ChartData = {
             labels: this.props.dates,
             datasets: [
@@ -68,6 +70,7 @@ class ForecastChart extends Component<IProps, IState> {
 
         return(
             <div>
+                <h2>Prognoza pogody</h2>
                 <Line type={Line} data={data} width={5} height={1}/>
             </div>
         )
